@@ -27,4 +27,4 @@ function updateCounter() {
 }
 
 // Bind debounce function to click event
-button.on("click", _.debounce(updateCounter, 300));
+button.on("click", _.debounce(updateCounter, 500));
