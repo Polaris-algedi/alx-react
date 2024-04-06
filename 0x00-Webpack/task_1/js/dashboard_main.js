@@ -1,6 +1,5 @@
 import $ from "jquery";
-
-// Import jQuery
+import _ from "lodash";
 
 // Create elements
 const paragraph1 = $("<p>").text("Holberton Dashboard");
