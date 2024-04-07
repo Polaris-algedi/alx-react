@@ -1,7 +1,6 @@
 import $ from "jquery";
-
-// Import jQuery
-
+import _ from "lodash";
+import "../css/main.css";
 // Create elements
 const paragraph1 = $("<p>").text("Holberton Dashboard");
 const paragraph2 = $("<p>").text("Dashboard data for the students");
@@ -28,4 +27,4 @@ function updateCounter() {
 }
 
 // Bind debounce function to click event
-button.on("click", _.debounce(updateCounter, 300));
+button.on("click", _.debounce(updateCounter, 500));

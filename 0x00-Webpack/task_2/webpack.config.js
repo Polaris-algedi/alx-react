@@ -1,49 +1,36 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  mode: "production",
   entry: "./js/dashboard_main.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "public"),
   },
+  mode: "production", // Set to production mode
+
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: ["style-loader", "css-loader"],
       },
+
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         use: [
           {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "assets/images/",
-            },
+            loader: 'file-loader',
+          },
+          {
+            loader: 'image-webpack-loader',
           },
         ],
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
-    }),
-    new MiniCssExtractPlugin({
-      filename: "main.css",
-    }),
-  ],
-  optimization: {
-    minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],
+
+  performance: {
+    hints: false,
+    maxAssetSize: 512000,
   },
 };
