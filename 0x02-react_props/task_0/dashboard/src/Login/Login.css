@@ -1,0 +1,9 @@
+.App-body {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.App-body [for="password"],
+.App-body button {
+    margin-left: 10px;
+}
